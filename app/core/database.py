@@ -3,11 +3,11 @@ from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+DEFAULT_DATABASE_URL = "postgresql://postgres:postgres@localhost/cash-flow"
+
 
 def get_url():
-    return getenv(
-        "DATABASE_URL", default="postgresql://postgres:postgres@localhost/cash-flow",
-    )
+    return getenv("DATABASE_URL", default=DEFAULT_DATABASE_URL,)
 
 
 engine = create_engine(get_url())
