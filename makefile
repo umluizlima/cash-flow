@@ -22,3 +22,7 @@ test:
 	docker-compose down && \
 	PYTHONPATH=. \
 	python -m pytest --cov=app
+
+.PHONY: run
+run: db_init db_run_migrations
+	uvicorn --reload app.api:api
