@@ -37,7 +37,7 @@ class BaseRepository(metaclass=ABCMeta):
         return self.save(self.__model__(**data))
 
     def update_by_id(self, id: int, data: Dict):
-        if data and not self._filter_by_id(id).update(data):
+        if not self._filter_by_id(id).update(data):
             raise NoResultFound()
         self.db.commit()
         return self.find_by_id(id)
