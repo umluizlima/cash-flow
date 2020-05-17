@@ -16,3 +16,9 @@ db_generate_migration: db_init
 db_run_migrations: db_init
 	PYTHONPATH=. \
 	alembic upgrade head
+
+.PHONY: test
+test:
+	docker-compose down && \
+	PYTHONPATH=. \
+	python -m pytest --cov=app
